@@ -88,3 +88,8 @@ ADD CONSTRAINT fk_producto FOREIGN KEY (producto)
 REFERENCES public.productos(nombre);
 /*20. Realizar una consulta que muestre los nombres de los clientes, los nombres de
 los productos y las cantidades de los pedidos donde coincida la clave externa.*/
+SELECT c.name, pe.nombre, p.cantidad FROM public.clientes c
+INNER JOIN public.pedidos p
+ON c.id = p.cliente_id
+LEFT JOIN public.productos pe
+ON p.producto = pe.nombre;
